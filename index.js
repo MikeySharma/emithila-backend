@@ -41,6 +41,6 @@ app.use(notFound)
 app.use(errorHandler)
 
 app.listen(port, ()=>{
-    console.log(`furniture-backend listening at http://localhost:${port}`);
+    console.log(`backend listening at ${port}`);
 })
 

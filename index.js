@@ -19,10 +19,10 @@ const cors = require('cors');
 const port = process.env.PORT || 4000;
 const app = express();
 
+app.use(cors());
 connectToMongo();
 
 // app.use(morgan('dev'));
-app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded ({extended: false}))
 app.use(cookieParser())

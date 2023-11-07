@@ -25,7 +25,7 @@ const cloudinaryImgUploading = (req) => {
  
       let cld_upload_stream = cloudinary.uploader.upload_stream(
        {
-         folder: "foo"
+        resource_type: 'image'
        },
        (error, result) => {
  
@@ -35,7 +35,7 @@ const cloudinaryImgUploading = (req) => {
            reject(error);
           }
         }
-      );
+      ).end(req);
  
       streamifier.createReadStream(req).pipe(cld_upload_stream);
     });

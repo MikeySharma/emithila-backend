@@ -33,7 +33,6 @@ const blogImgResize = async (req, res, next)=>{
 }
 const uploadPhoto = multer({
     storage: multer.memoryStorage(),
-    fileFilter: multerFilter,
     limits: {fieldSize: 1000000},
 });
 

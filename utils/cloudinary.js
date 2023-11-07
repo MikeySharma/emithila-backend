@@ -1,4 +1,4 @@
-const cloudinary = require("cloudinary").v2;
+const cloudinary = require("cloudinary");
 const streamifier = require('streamifier');
 cloudinary.config({
     cloud_name : process.env.CLOUD_NAME,
@@ -23,7 +23,7 @@ const cloudinaryImgUploading = (req) => {
 
     return new Promise((resolve, reject) => {
  
-      let cld_upload_stream = cloudinary.uploader.upload_stream(
+      let cld_upload_stream = cloudinary.v2.uploader.upload_stream(
        {
         resource_type: 'image'
        },

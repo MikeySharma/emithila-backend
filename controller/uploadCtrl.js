@@ -11,7 +11,7 @@ const uploadImages = asyncHandler (async (req, res)=>{
             const {buffer} = file;
             const newPath = await cloudinaryImgUploading(buffer);
             // console.log(newPath, "new Path");
-            urls.push(newPath);
+            urls.push(JSON.stringify(newPath));
 
         }
         // console.log(urls);

@@ -29,6 +29,7 @@
     "nodemailer": "^6.9.7",
     "sharp": "^0.32.6",
     "slugify": "^1.6.6",
+    "streamifier": "^0.1.1",
     "uniqid": "^5.4.0"
   }
 }

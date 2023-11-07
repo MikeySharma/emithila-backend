@@ -37,9 +37,9 @@ const deleteImages = asyncHandler (async (req, res)=>{
 const uploadBlogImages = asyncHandler (async (req, res)=>{
    
     try{
-
+        
         const urls = [];
-        const files = Array.from(req.files);
+        const files = req.files;
         for(const file of files){
             const {buffer} = file;
             const newPath = await cloudinaryImgUploading(buffer);

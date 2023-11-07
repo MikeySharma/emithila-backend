@@ -10,7 +10,7 @@ const {
 // const {  uploadPhoto } = require('../middleware/uploadImages');
 
 
-router.put('/', authMiddleware, isAdmin, uploadImages );
+router.post('/', authMiddleware, isAdmin, uploadImages );
 router.delete('/delete-img/:id',authMiddleware, isAdmin, deleteImages);
 router.put('/blog', authMiddleware, isAdmin, uploadBlogImages);
 

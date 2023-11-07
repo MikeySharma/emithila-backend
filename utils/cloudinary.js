@@ -30,7 +30,7 @@ const cloudinaryImgUploading = (req) => {
        (error, result) => {
  
          if (result) {
-           resolve({url: result.secure_url});
+           resolve({url: result.secure_url,public_id: result.public_id});
          } else {
            reject(error);
           }

@@ -5,7 +5,7 @@ const asyncHandler = require('express-async-handler');
 const uploadImages = asyncHandler (async (req, res)=>{
     try{
         const urls = [];
-        const files = req.files;
+        const files = Array.from(req.files);
         for(const file of files){
             const {buffer} = file;
             const newPath = await cloudinaryImgUploading(buffer);
@@ -38,14 +38,12 @@ const uploadBlogImages = asyncHandler (async (req, res)=>{
    
     try{
 
-        const uploader = (path)=> cloudinaryImgUploading(path, "images");
         const urls = [];
-        const files = req.files;
+        const files = Array.from(req.files);
         for(const file of files){
-            const {path} = file;
-            const newPath = await uploader(path);
+            const {buffer} = file;
+            const newPath = await cloudinaryImgUploading(buffer);
             urls.push(newPath);
-            fs.unlinkSync(path);
             
         }
         const images = urls.map((file) => {

@@ -5,7 +5,7 @@ const asyncHandler = require('express-async-handler');
 const uploadImages = asyncHandler (async (req, res)=>{
     try{
         const urls = [];
-        const files = req.files;
+        const files = Array.from(req.files);
         for(const file of files){
             const {buffer} = file;
             const newPath = await cloudinaryImgUploading(buffer);

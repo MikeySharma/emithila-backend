@@ -10,9 +10,9 @@ const {
 const {  uploadPhoto } = require('../middleware/uploadImages');
 
 
-router.put('/', authMiddleware, isAdmin,uploadPhoto.array("image", 10), uploadImages );
+router.put('/', authMiddleware, isAdmin,uploadPhoto.array("images", 10), uploadImages );
 router.delete('/delete-img/:id',authMiddleware, isAdmin, deleteImages);
-router.put('/blog', authMiddleware, isAdmin, uploadPhoto.array("image", 10), uploadBlogImages);
+router.put('/blog', authMiddleware, isAdmin, uploadPhoto.array("images", 10), uploadBlogImages);
 
 
 module.exports = router;

@@ -7,12 +7,12 @@ const {
     uploadBlogImages,
 
 } = require('../controller/uploadCtrl');
-// const {  uploadPhoto } = require('../middleware/uploadImages');
+const {  uploadPhoto } = require('../middleware/uploadImages');
 
 
-router.post('/', authMiddleware, isAdmin, uploadImages );
+router.put('/', authMiddleware, isAdmin,uploadPhoto.array("images", 10), uploadImages );
 router.delete('/delete-img/:id',authMiddleware, isAdmin, deleteImages);
-router.put('/blog', authMiddleware, isAdmin, uploadBlogImages);
+router.put('/blog', authMiddleware, isAdmin, uploadPhoto.array("images", 10), uploadBlogImages);
 
 
 module.exports = router;

@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
 const asyncHandler = require('express-async-handler');
+require('dotenv').config();
 
 const mailSender = asyncHandler(async (req, res) => {
     const { to, subject, text, html } = req.body;
@@ -26,7 +27,7 @@ const mailSender = asyncHandler(async (req, res) => {
     });
 
     console.log("Message sent: %s", info.messageId);
-    res.send({message: "Mail Sent Successfully."});
+    res.send({ message: "Mail Sent Successfully." });
 
 })
 

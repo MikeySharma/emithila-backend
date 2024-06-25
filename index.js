@@ -1,7 +1,7 @@
 const connectToMongo = require('./config/db');
 const express = require('express');
 const bodyParser = require('body-parser')
-const dotenv = require('dotenv').config();
+require('dotenv').config();
 const {notFound, errorHandler} = require('./middleware/errorHandler');
 const authRouter = require('./routes/authRoute');
 const cookieParser = require('cookie-parser');
@@ -14,7 +14,9 @@ const blogCategoryRouter = require("./routes/blogCategoryRoute");
 const brandCategoryRouter = require("./routes/brandCategoryRoute");
 const EnquiryRouter = require("./routes/enqRoute");
 const couponRouter = require("./routes/couponRoute");
-// const morgan = require('morgan');
+const mailRouter = require('./routes/mailSenderRoute');
+
+const morgan = require('morgan');
 const cors = require('cors');
 const port = process.env.PORT || 4000;
 const app = express();
@@ -22,10 +24,10 @@ const app = express();
 connectToMongo();
 
 app.use(cors());
-// app.use(morgan('dev'));
+app.use(morgan('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded ({extended: false}))
-app.use(cookieParser())
+app.use(bodyParser.urlencoded ({extended: false}));
+app.use(cookieParser());
 app.use('/api/product', productRouter);
 app.use('/api/user', authRouter);
 app.use('/api/blog', blogRouter);
@@ -36,7 +38,7 @@ app.use('/api/coupon', couponRouter);
 app.use('/api/color', colorRouter);
 app.use('/api/enquiry', EnquiryRouter);
 app.use('/api/upload', uploadRouter);
-
+app.use('/api/mail', mailRouter);
 app.use(notFound)
 app.use(errorHandler)
 
